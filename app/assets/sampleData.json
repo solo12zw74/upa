@@ -1,0 +1,8 @@
+{
+		"users":[
+		{"id":1,"name":"Foo", "lastName":"Faz", "age":15},
+		{"id":2,"name":"Bar", "lastName":"Baz", "age":25},
+		{"id":3,"name":"Baz", "lastName":"Uaz", "age":35}],
+		"mediators":[],
+		"poses":[]
+}
