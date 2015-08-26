@@ -2,7 +2,7 @@
 
 (function(){
 	angular.module('app.users')
-	.controller('UsersController', ['$http', '$state' UsersController]);
+	.controller('UsersController', ['$http', '$state', UsersController]);
 
 	function UsersController($http, $state){
 		var vm = this;
@@ -11,10 +11,10 @@
 		});
 		
 
-		this.showDetails = showDetails;
+		vm.edit = edit;
 
-		function showDetails(userId){
-			$state.go('user.detail', {id: userId});
+		function edit(userId){
+			$state.go('users.edit', {id: userId});
 		}
 	}
 })();

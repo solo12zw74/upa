@@ -1,5 +1,5 @@
 'use strict';
 
 (function(){
-	angular.module('app.users',['ngResource']);
+	angular.module('app.users',[]);
 })();

@@ -29,18 +29,25 @@
 
 
   $stateProvider
-  .state('/', {
-    url:'/',
+  .state('users', {
+    url:'',
     templateUrl: 'scripts/users/users.html',
     controller: 'UsersController',
     controllerAs: 'users'
   })
-  .state('/mediators', {
+  .state('users.edit', {
+    url:'/:id',
+    templateUrl: 'scripts/users/users.edit.html',
+    
+  })
+  .state('mediators', {
+    url:'mediators',
     templateUrl: 'users/mediators.html',
     controller: 'MediatorsController',
     controllerAs: 'mediators'
   })
-  .state('/pos', {
+  .state('poses', {
+    url: 'poses',
     templateUrl: 'users/pointOfSales.html',
     controller: 'PointOfSalesController',
     controllerAs: 'poses'
