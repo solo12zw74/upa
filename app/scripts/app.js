@@ -12,7 +12,7 @@
  .module('app', [
   'ngCookies',
   'ngResource',
-  'ui.router' , 
+  'ui.router' ,
   'app.users'
   ])
  .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
@@ -37,8 +37,7 @@
   })
   .state('users.edit', {
     url:'/:id',
-    templateUrl: 'scripts/users/users.edit.html',
-    
+    templateUrl: 'scripts/users/users.edit.html'
   })
   .state('mediators', {
     url:'mediators',
@@ -53,5 +52,5 @@
     controllerAs: 'poses'
   });
 
-  
+
 }]);

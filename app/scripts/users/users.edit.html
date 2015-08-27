@@ -1,13 +1,13 @@
 <!-- user.html -->
-<form action="" method="POST" role="form">
-	<legend>{{user.name}}</legend>
+<div data-ng-show="users.user.id">
+<form role="form" data-ng-submit="users.save(users.user)" >
+	<legend>{{users.user.name}}</legend>
 
 	<div class="form-group">
 		<label for="">label</label>
-		<input type="text" class="form-control" id="" placeholder="Input field">
+		<input type="text" class="form-control" placeholder="Input field" data-ng-model="users.user.name">
 	</div>
-
-	
 
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
