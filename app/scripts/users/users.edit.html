@@ -1,13 +1,103 @@
-<!-- user.html -->
-<div data-ng-show="users.user.id">
-<form role="form" data-ng-submit="users.save(users.user)" >
-	<legend>{{users.user.name}}</legend>
+<div class="well" data-ng-show="!users.selected">
 
-	<div class="form-group">
-		<label for="">label</label>
-		<input type="text" class="form-control" placeholder="Input field" data-ng-model="users.user.name">
+	<div class="row text-center">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+			<h3>Выберите пользователя</h3> <h4>- или -</h4> <button type="button" class="btn btn-success btn-lg" data-ng-click="users.add()">Создайте нового</button>
+		</div>
 	</div>
-
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
 </div>
+<form role="form" data-ng-submit="users.save(users.selected)" data-ng-show="users.selected">
+
+
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="form-group">
+				<label for="">Домен</label>
+				<select name="domain" data-ng-model="users.selected.domain" class="form-control">
+					<option value="ugsk">UGSK</option>
+					<option value="partner">PARTNER</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="login">Логин</label>
+				<input id="login" type="text" class="form-control" placeholder="PetrovAA" data-ng-model="users.selected.login">
+			</div>
+			<div class="form-group">
+				<label for="name">ФИО</label>
+				<input id="name" type="text" class="form-control" placeholder="Антонов Юрий Антонович" data-ng-model="users.selected.name">
+			</div>
+			<div class="form-group">
+				<label for="role">Роль</label>
+				<select name="role" id="role" class="form-control" required="required" data-ng-model="users.selected.role">
+					<option value="1">Сотрудник</option>
+					<option value="2">Партнёр</option>
+					<option value="3">Куратор</option>
+					<option value="4">Куратор ГО</option>
+					<option value="5">Андеррайтер</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="filial">Филиал</label>
+				<select name="filial" id="filial" class="form-control" required="required" data-ng-model="users.selected.filial">
+					<option value="1">Архангельский филиал</option>
+					<option value="2">Барнаульский филиал</option>
+					<option value="3">Горноалтайский филиал</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="saleChannel">Канал продаж</label>
+				<select name="saleChannel" id="saleChannel" class="form-control" required="required" data-ng-model="users.selected.saleChannel">
+					<option value="1">Офисно-прямой</option>
+					<option value="2">Агентский</option>
+					<option value="3">Партнёрский</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="intermediate">Посредник</label>
+				<select name="intermediate" id="intermediate" class="form-control" required="required" data-ng-model="users.selected.intermediate">
+					<option value="0">Не выбран</option>
+					<option value="1">Иванов Александр Александрович</option>
+					<option value="2">Петров Пётр Петрович</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="pos">Точка продаж</label>
+				<select name="pos" id="pos" class="form-control" required="required" data-ng-model="users.selected.pos">
+					<option value="0">Не выбран</option>
+					<option value="1">Сотрудник</option>
+					<option value="2">Куратор</option>
+					<option value="3">Андеррайтер</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="form-group">
+				<label for="parnetFactor">Коэффициент партнёра</label>
+				<input id="parnetFactor" type="number" step="0.01" min="0" max="1" class="form-control" placeholder="0.0" data-ng-model="users.selected.partnerFactor">
+			</div>
+			<div class="form-group">
+				<label for="document">Доверенность</label>
+				<input id="document" type="text" class="form-control" placeholder="Доверенность № 0000" data-ng-model="users.selected.document">
+			</div>
+			<div class="form-group">
+				<label for="documentDate">Дата доверенности</label>
+				<input id="documentDate" type="date" class="form-control" placeholder="01.01.2015" data-ng-model="users.selected.documentDate">
+			</div>
+			<div class="form-group">
+				<label for="lossAdjustmentFactor">К тип урегулир.</label>
+				<input id="lossAdjustmentFactor" type="number" class="form-control" placeholder="1.0" step="0.01" min="0" data-ng-model="users.selected.lossAdjustmentFactor">
+			</div>
+			<div class="form-group">
+				<label for="guid">GUID</label>
+				<input id="guid" type="text" required class="form-control" placeholder="00000000-0000-0000-0000-000000000000" pattern="[A-Z09]{8}-0000-0000-0000-000000000000" data-ng-model="users.selected.guid">
+			</div>
+			<div class="form-group">
+				<label for="acquisition"><abbr title="Комисионное вознаграждение">КВ</abbr></label>
+				<input id="acquisition" type="number" min="0" max="30" step="1" class="form-control" placeholder="25" data-ng-model="users.selected.acquisition">
+			</div>
+			<span class="label label-success" data-ng-show="users.selected.created">Создан {{users.selected.created}}</span>
+			<span class="label label-success" data-ng-show="users.selected.updated">Изменён {{users.selected.updated}}</span>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-primary pull-right">Сохранить</button>
+</form>

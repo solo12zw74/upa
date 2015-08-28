@@ -1,30 +1,35 @@
 <div class="container">
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Last Name</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-ng-repeat="user in users.list" data-ng-click="users.edit(user)">
-            <td>{{user.name}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.age}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Список пользователей <a href="#" class='pull-right' data-ng-click="users.add()"> Добавить </a>
+        <div class="input-group">
+        <input type="search" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+        <span class="input-group-addon" id="sizing-addon1">@</span>
+      </div>
+      </div>
 
+
+      <div class="panel-body" style="max-height: 768px; overflow-y: scroll;">
+        <ul class="list-group">
+          <li class="list-group-item"
+          data-ng-repeat="user in users.list"
+          data-ng-click="users.edit(user)"
+          data-ng-class="{active: users.selected.id == user.id}">
+          <h4>{{user.name}}</h4>
+          <small><em>{{user.login}}</em></small>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-    <div ui-view>
-      empty
-    </div>
-    </div>
+</div>
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading"
+    data-ng-show="users.selected"
+    data-ng-bind="users.selected ? 'Редактирование пользователя' : 'Создание пользователя'"></div>
+    <div class="panel-body" ui-view />
+  </div>
+</div>
 </div>
 
 

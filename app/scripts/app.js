@@ -39,6 +39,10 @@
     url:'/:id',
     templateUrl: 'scripts/users/users.edit.html'
   })
+  .state('users.new', {
+    url:'/new',
+    templateUrl: 'scripts/users/users.edit.html'
+  })
   .state('mediators', {
     url:'mediators',
     templateUrl: 'users/mediators.html',
