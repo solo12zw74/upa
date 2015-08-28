@@ -5,6 +5,6 @@
 	.factory('User', ['$resource',User]);
 
 	function User($resource){
-		return $resource('http://localhost/api/Users');
+		return $resource('http://localhost:51976/Employees');
 	}
 })();

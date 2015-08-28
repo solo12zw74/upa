@@ -1,35 +1,52 @@
 <div class="container">
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Список пользователей <a href="#" class='pull-right' data-ng-click="users.add()"> Добавить </a>
-        <div class="input-group">
-        <input type="search" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
-        <span class="input-group-addon" id="sizing-addon1">@</span>
-      </div>
-      </div>
+      <div class="panel-heading">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            Список пользователей
+            <a href="#/users/new" type="button" class="pull-right"> Добавить </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="input-group">
+            <input type="search" class="form-control" placeholder="Поиск" aria-describedby="search-addon" />
+              <span class="input-group-addon glyphicon glyphicon-search" id="search-addon"></span>
+            </div>
+          </div>
+        </div>
 
 
+      </div>
       <div class="panel-body" style="max-height: 768px; overflow-y: scroll;">
         <ul class="list-group">
-          <li class="list-group-item"
-          data-ng-repeat="user in users.list"
-          data-ng-click="users.edit(user)"
-          data-ng-class="{active: users.selected.id == user.id}">
-          <h4>{{user.name}}</h4>
-          <small><em>{{user.login}}</em></small>
-        </li>
-      </ul>
+          <li class="list-group-item" data-ng-repeat="user in users.list" data-ng-click="users.edit(user)" data-ng-class="{active: users.selected.id == user.id}" >
+            <h4 >{{user.name}}</h4>
+            <small><em>{{user.login}}</em></small>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-  <div class="panel panel-default">
-    <div class="panel-heading"
-    data-ng-show="users.selected"
-    data-ng-bind="users.selected ? 'Редактирование пользователя' : 'Создание пользователя'"></div>
-    <div class="panel-body" ui-view />
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading"
+      data-ng-show="users.selected"
+      data-ng-bind="users.selected ? 'Редактирование пользователя' : 'Создание пользователя'"></div>
+      <div class="panel-body" ui-view >
+        <div class="well" data-ng-show="!users.selected">
+
+          <div class="row text-center">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+              <h3>Выберите пользователя</h3> <h4>- или -</h4> <button type="button" class="btn btn-success btn-lg" data-ng-click="users.add()">Создайте нового</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>
 
 

@@ -30,18 +30,22 @@
 
   $stateProvider
   .state('users', {
-    url:'',
+    url:'/users',
     templateUrl: 'scripts/users/users.html',
     controller: 'UsersController',
     controllerAs: 'users'
   })
   .state('users.edit', {
-    url:'/:id',
-    templateUrl: 'scripts/users/users.edit.html'
+    url:'/{id:[0-9]{1,8}}',
+    templateUrl: 'scripts/users/users.edit.html',
+    controller: 'UserController',
+    controllerAs: 'user'
   })
   .state('users.new', {
     url:'/new',
-    templateUrl: 'scripts/users/users.edit.html'
+    templateUrl: 'scripts/users/users.edit.html',
+    controller: 'UserController',
+    controllerAs: 'user'
   })
   .state('mediators', {
     url:'mediators',

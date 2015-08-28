@@ -1,41 +1,35 @@
-'use strict';
-
 (function(){
+	'use strict';
 	angular.module('app.users')
 	.controller('UsersController', ['$http', '$state', '$filter', 'User' , UsersController]);
 
 	function UsersController($http, $state, $filter, User){
 		var vm = this;
-
 		vm.list = [];
-		vm.selected = null;
 		vm.add = add;
 		vm.edit = edit;
-		vm.save = save;
+		vm.selected = null;
 
-		$http.get('assets/sampleData.json').success(function(data){
-			vm.list = data.users;
-		});
+		init();
+
+		function init(){
+			$http.get('assets/sampleData.json').success(function(data){
+				vm.list = [].concat(data.users);
+			});
+
+
+			if ($state.params.id){
+				vm.selected = {"id":1,"login":"ugsk\\IvanovAA", "name":"Иванов Александр Александрович", "created":"01.01.2015"};
+			}
+		}
 
 		function add(){
-			vm.selected = {
-				domain:'ugsk',
-				role:'1',
-				filial:'1',
-				saleChannel:'1',
-				intermediate:'1',
-				pos:'1'
-			};
 			$state.go('users.new');
 		}
 
 		function edit(user){
 			vm.selected = user;
 			$state.go('users.edit', {id : user.id});
-		}
-
-		function save(user){
-			console.debug(user.name);
 		}
 	}
 })();
