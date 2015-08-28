@@ -1,11 +1,10 @@
-//mediators.controller.js
-
 //mediator.controller.js
 (function(){
+	'use strict';
 	angular.module('app.users')
-	.controller('MediatorControllers', MediatorsController);
+	.controller('MediatorsController', MediatorsController);
 
 	function MediatorsController(){
-		
+
 	}
 })();

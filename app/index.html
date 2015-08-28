@@ -27,21 +27,21 @@
             <div class="navbar-header">
 
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Показать меню</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="#/">generated</a>
+              <a class="navbar-brand" href="#/">Главная</a>
             </div>
 
             <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
               <ul class="nav navbar-nav">
-                <li class="active"><a ui-sref="users" href="#/users">Users</a></li>
-                <li><a ui-sref="mediators" href="#/mediators">Mediators</a></li>
-                <li><a ui-sref="poses" href="#/poses">Point of sales</a></li>
+                <li ui-sref-active="active"><a ui-sref="users" href="#/users">Пользователи</a></li>
+                <li ui-sref-active="active"><a ui-sref="mediators" href="#/mediators">Посредники</a></li>
+                <li ui-sref-active="active"><a ui-sref="poses" href="#/poses">Точки продаж</a></li>
               </ul>
             </div>
           </div>
@@ -49,7 +49,8 @@
       </div>
 
       <div class="container">
-        <div ui-view></div>
+        <div ui-view>
+        </div>
       </div>
 
       <div class="footer">
@@ -87,6 +88,11 @@
      <script src="scripts/users/users.module.js"></script>
      <script src="scripts/users/users.controller.js"></script>
      <script src="scripts/users/user.controller.js"></script>
+     <script src="scripts/users/mediator.controller.js"></script>
+     <script src="scripts/users/mediators.controller.js"></script>
+     <script src="scripts/users/pointOfSales.controller.js"></script>
+     <script src="scripts/users/pointOfSale.controller.js"></script>
+
      <script src="scripts/users/user.service.js"></script>
      <!-- endbuild -->
    </body>

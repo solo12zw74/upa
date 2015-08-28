@@ -1,9 +1,9 @@
 (function(){
 	'use strict';
 	angular.module('app.users')
-	.controller('UsersController', ['$http', '$state', '$filter', 'User' , UsersController]);
+	.controller('UsersController', ['$http', '$state', '$filter' , UsersController]);
 
-	function UsersController($http, $state, $filter, User){
+	function UsersController($http, $state, $filter){
 		var vm = this;
 		vm.list = [];
 		vm.add = add;

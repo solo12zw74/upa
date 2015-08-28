@@ -27,8 +27,13 @@
   }])
  .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
+  .state('main', {
+    url:'/',
+    templateUrl: 'main.html',
+  })
   .state('users', {
     url:'/users',
     templateUrl: 'scripts/users/users.html',
@@ -48,14 +53,14 @@
     controllerAs: 'user'
   })
   .state('mediators', {
-    url:'mediators',
-    templateUrl: 'users/mediators.html',
+    url:'/mediators',
+    templateUrl: 'scripts/users/mediators.html',
     controller: 'MediatorsController',
     controllerAs: 'mediators'
   })
   .state('poses', {
-    url: 'poses',
-    templateUrl: 'users/pointOfSales.html',
+    url: '/poses',
+    templateUrl: 'scripts/users/pointOfSales.html',
     controller: 'PointOfSalesController',
     controllerAs: 'poses'
   });
