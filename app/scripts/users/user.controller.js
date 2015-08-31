@@ -3,9 +3,9 @@
 (function(){
 	'use strict';
 	angular.module('app.users')
-	.controller('UserController',['$http', '$state', 'User', UserControler]);
+	.controller('UserController',['$state', '$stateParams', 'Users', UserControler]);
 
-	function UserControler($state, User)
+	function UserControler($state, $stateParams, Users)
 	{
 		var vm = this;
 		vm.selected = {
@@ -20,9 +20,11 @@
 		init();
 
 		function init(){
-			if ($state.params.id)
+			if ($stateParams.id)
 			{
-				vm.selected = {"id":1,"login":"ugsk\\IvanovAA", "name":"Иванов Александр Александрович", "created":"01.01.2015"};
+				Users.one($stateParams.id).get().then(function(data){
+					vm.selected = data;	
+				});
 			}
 		}
 

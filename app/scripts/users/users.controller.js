@@ -1,9 +1,9 @@
 (function(){
 	'use strict';
 	angular.module('app.users')
-	.controller('UsersController', ['Users','$state', '$filter' , UsersController]);
+	.controller('UsersController', ['Users','$state', '$stateParams', '$filter' , UsersController]);
 
-	function UsersController(Users, $state, $filter){
+	function UsersController(Users, $state, $stateParams, $filter){
 		var vm = this;
 		vm.list = [];
 		vm.add = add;
@@ -13,8 +13,8 @@
 		init();
 
 		function init(){
-			if ($state.params && $state.params.id){
-				Users.one($state.params.id).get().then(function(data){
+			if ($stateParams.id){
+				Users.one($stateParams.id).get().then(function(data){
 					vm.selected = data;	
 				});
 			} else {

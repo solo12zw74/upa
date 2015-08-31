@@ -1,5 +1,4 @@
-'use strict';
-
 (function(){
-	angular.module('app.users',['restangular']);
+	'use strict';
+	angular.module('app.users',[]);
 })();
