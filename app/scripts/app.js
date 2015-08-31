@@ -11,9 +11,11 @@
  angular
  .module('app', [
   'ngCookies',
-  'ngResource',
-  'ui.router' ,
-  'app.users'
+  'restangular',
+  'ui.router',
+  'ngMockE2E',
+  'app.users',
+  'appDev'
   ])
  .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
 

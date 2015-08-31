@@ -1,27 +1,31 @@
 (function(){
 	'use strict';
 	angular.module('app.users')
-	.controller('UsersController', ['$http', '$state', '$filter' , UsersController]);
+	.controller('UsersController', ['Users','$state', '$filter' , UsersController]);
 
-	function UsersController($http, $state, $filter){
+	function UsersController(Users, $state, $filter){
 		var vm = this;
 		vm.list = [];
 		vm.add = add;
 		vm.edit = edit;
 		vm.selected = null;
-
+		
 		init();
 
 		function init(){
-			$http.get('assets/sampleData.json').success(function(data){
-				vm.list = [].concat(data.users);
-			});
-
-
-			if ($state.params.id){
-				vm.selected = {"id":1,"login":"ugsk\\IvanovAA", "name":"Иванов Александр Александрович", "created":"01.01.2015"};
-			}
+			if ($state.params && $state.params.id){
+				Users.one($state.params.id).get().then(function(data){
+					vm.selected = data;	
+				});
+			} else {
+				Users
+				.getList()
+				.then(function(data){
+					vm.list = [].concat(data);
+				});
+			}	
 		}
+
 
 		function add(){
 			$state.go('users.new');
