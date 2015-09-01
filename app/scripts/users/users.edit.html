@@ -87,8 +87,8 @@
 				<label for="acquisition"><abbr title="Комисионное вознаграждение">КВ</abbr></label>
 				<input id="acquisition" type="number" min="0" max="30" step="1" class="form-control" placeholder="25" data-ng-model="user.selected.acquisition">
 			</div>
-			<span class="label label-success" data-ng-show="user.selected.created">Создан {{user.selected.created}}</span>
-			<span class="label label-success" data-ng-show="user.selected.updated">Изменён {{user.selected.updated}}</span>
+			<span class="label label-success" data-ng-show="user.selected.created">Создан {{user.selected.created | date: "dd.MM.YYYY"}}</span>
+			<span class="label label-success" data-ng-show="user.selected.updated">Изменён {{user.selected.updated | date: "dd.MM.YYYY"}}</span>
 		</div>
 	</div>
 	<button type="submit" class="btn btn-primary pull-right">Сохранить</button>

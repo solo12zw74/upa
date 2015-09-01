@@ -23,7 +23,7 @@
 			if ($stateParams.id)
 			{
 				Users.one($stateParams.id).get().then(function(data){
-					vm.selected = data;	
+					vm.selected = data[0];
 				});
 			}
 		}
