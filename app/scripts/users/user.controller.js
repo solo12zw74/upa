@@ -34,8 +34,8 @@
 			}
 		}
 
-		function save(){
-
+		function save(user){
+			console.debug(user);
 		}
 	}
 
