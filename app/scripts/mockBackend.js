@@ -916,7 +916,7 @@
             item.updated = new Date(item.updated);
             item.documentDate = new Date(item.documentDate);
             return item;
-        })
+        });
 
 		$httpBackend.whenGET('/Employees').respond(data.users);
 		$httpBackend.whenGET(new RegExp('\\/Employees\\/[0-9]+')).respond(
