@@ -11,20 +11,22 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="input-group">
-            <input type="search" class="form-control" placeholder="Поиск" aria-describedby="search-addon" />
-              <span class="input-group-addon glyphicon glyphicon-search" id="search-addon"></span>
+            <form  class="ng-pristine ng-valid">
+              <div class="input-group">
+                <div class="input-group-addon"  id="search-addon"><i class="glyphicon glyphicon-search"></i></div>
+                <input type="search" class="form-control" placeholder="Поиск" aria-describedby="search-addon" data-ng-model="users.filter"/>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
 
 
       </div>
-      <div class="panel-body" style="max-height: 768px; overflow-y: scroll;">
+      <div class="panel-body" style="min-height: 700px; max-height: 700px; overflow-y: scroll;">
         <ul class="list-group">
-          <li class="list-group-item" data-ng-repeat="user in users.list" data-ng-click="users.edit(user)" data-ng-class="{active: users.selected.id == user.id}" >
+          <li class="list-group-item" data-ng-repeat="user in users.list | filter:users.filter" data-ng-click="users.edit(user)" data-ng-class="{active: users.selected.id == user.id}" >
             <h4 >{{user.name}}</h4>
-            <small><em>{{user.id}}. {{user.login}}</em></small>
+            <small><em>{{user.id}}. {{user.domain}}\{{user.login}}</em></small>
           </li>
         </ul>
       </div>

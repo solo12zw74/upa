@@ -9,6 +9,7 @@
 		vm.add = add;
 		vm.edit = edit;
 		vm.selected = {};
+		vm.filter = '';
 		init();
 
 		function init(){
