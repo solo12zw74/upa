@@ -14,7 +14,7 @@
             <form  class="ng-pristine ng-valid">
               <div class="input-group">
                 <div class="input-group-addon"  id="search-addon"><i class="glyphicon glyphicon-search"></i></div>
-                <input type="search" class="form-control" placeholder="Поиск" aria-describedby="search-addon" data-ng-model="users.filter"/>
+                <input type="search" class="form-control" placeholder="Поиск" aria-describedby="search-addon" data-ng-model="user.filter"/>
               </div>
             </div>
           </form>
@@ -24,9 +24,9 @@
       </div>
       <div class="panel-body" style="min-height: 700px; max-height: 700px; overflow-y: scroll;">
         <ul class="list-group">
-          <li class="list-group-item" data-ng-repeat="user in users.list | filter:users.filter" data-ng-click="users.edit(user)" data-ng-class="{active: users.selected.id == user.id}" >
-            <h4 >{{user.name}}</h4>
-            <small><em>{{user.id}}. {{user.domain}}\{{user.login}}</em></small>
+          <li class="list-group-item" data-ng-repeat="u in user.list | filter:user.filter" data-ng-click="user.edit(user)" data-ng-class="{active: user.selected.id == u.id}" >
+            <h4 >{{u.name}}</h4>
+            <small><em>{{u.id}}. {{u.domain}}\{{u.login}}</em></small>
           </li>
         </ul>
       </div>
@@ -38,11 +38,11 @@
       data-ng-show="users.selected"
       data-ng-bind="users.selected ? 'Редактирование пользователя' : 'Создание пользователя'"></div>
       <div class="panel-body" ui-view >
-        <div class="well" data-ng-show="!users.selected.id">
+        <div class="well" data-ng-show="!user.selected.id">
 
           <div class="row text-center">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
-              <h3>Выберите пользователя</h3> <h4>- или -</h4> <button type="button" class="btn btn-success btn-lg" data-ng-click="users.add()">Создайте нового</button>
+              <h3>Выберите пользователя</h3> <h4>- или -</h4> <button type="button" class="btn btn-success btn-lg" data-ng-click="user.add()">Создайте нового</button>
             </div>
           </div>
         </div>

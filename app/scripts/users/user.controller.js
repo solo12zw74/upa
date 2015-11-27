@@ -3,39 +3,73 @@
 (function(){
 	'use strict';
 	angular.module('app.users')
-	.controller('UserController',['$state', '$stateParams', 'Users', UserControler]);
+	.controller('UserController',['$state', '$stateParams', 'User', 'Role', 'Filial', 'SaleChannel', 'Intermediate', 'PointOfSale', UserController]);
 
-	function UserControler($state, $stateParams, Users)
+	function UserController($state, $stateParams, User, Role, Filial, SaleChannel, Intermediate, PointOfSale)
 	{
 		var vm = this;
-		vm.selected = {
-			domain:'ugsk',
-			role:'1',
-			filial:'1',
-			saleChannel:'1',
-			intermediate:'1',
-			pos:'1'
-		};
+		vm.roles = [];
+		vm.filials = [];
+		vm.saleChannels = [];
+		vm.intermediates = [];
+		vm.poses = [];
+		vm.filter = '';
+		vm.add = add;
+		vm.edit = edit;
 
-		vm.roles=[{id:"1", name:"Сотрудник"}, {id:"2", name:"Партнёр"}, {id:"3", name:"Куратор"}, {id:"4", name:"Куратор ГО"}, {id:"5", name:"Андеррайтер"}];
-		vm.filials = [ {id:"1", name: "Архангельский филиал"}, {id:"2", name: "Барнаульский филиал"},{id:"3", name: "Горноалтайский филиал"}];
-		vm.saleChannels = [ { id: "1", name: "Офисно-прямой"}, { id: "2", name:  "Агентский"}, { id: "3", name:  "Партнёрский"} ];
-		vm.intermediates = [{ id: "0", name: "Не выбран"},{ id: "1", name: "Иванов Александр Александрович"},{ id: "2", name: "Петров Пётр Петрович"}];
-		vm.poses = [ { id: "0", name:"Не выбран"}, { id: "1", name:"Сотрудник"}, { id: "2", name:"Куратор"}, { id: "3", name:"Андеррайтер"} ];
+		vm.selected = {}
 
 		init();
 
 		function init(){
+			Role
+			.getList()
+			.then(function(data){
+				vm.roles = [].concat(data);
+			});
+			Filial
+			.getList()
+			.then(function(data){
+				vm.filials = [].concat(data);
+			});
+			SaleChannel
+			.getList()
+			.then(function(data){
+				vm.saleChannels = [].concat(data);
+			});
+			Intermediate
+			.getList()
+			.then(function(data){
+				vm.intermediates = [].concat(data);
+			});
+
+			PointOfSale
+			.getList()
+			.then(function(data){
+				vm.poses = [].concat(data);
+			});
+
+			User
+			.getList()
+			.then(function(data){
+				vm.list = [].concat(data);
+			});
+
 			if ($stateParams.id)
 			{
-				Users.one($stateParams.id).get().then(function(data){
-					vm.selected = data[0];
+				User.one($stateParams.id).get().then(function(data){
+					vm.selected = data;
 				});
 			}
 		}
 
-		function save(user){
-			console.debug(user);
+		function add(){
+			$state.go('users.new');
+		}
+
+		function edit(user){
+			vm.selected = user;
+			$state.go('users.edit', {id : user.id});
 		}
 	}
 

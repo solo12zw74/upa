@@ -13,9 +13,9 @@
   'ngCookies',
   'restangular',
   'ui.router',
-  'ngMockE2E',
+  //'ngMockE2E',
   'app.users',
-  'appDev'
+  //'appDev'
   ])
  .run(['$rootScope', '$state', '$stateParams', function ($rootScope, $state, $stateParams) {
 
@@ -27,7 +27,10 @@
     $rootScope.$stateParams = $stateParams;
 
   }])
- .config(['$stateProvider','$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+ .config(['$stateProvider','$urlRouterProvider','RestangularProvider', function ($stateProvider, $urlRouterProvider, RestangularProvider) {
+
+  RestangularProvider.setBaseUrl('http://localhost:8080/');
+  RestangularProvider.setDefaultHttpFields({cache: true});
 
   $urlRouterProvider.otherwise('/');
 
@@ -39,8 +42,8 @@
   .state('users', {
     url:'/users',
     templateUrl: 'scripts/users/users.html',
-    controller: 'UsersController',
-    controllerAs: 'users'
+    controller: 'UserController',
+    controllerAs: 'user'
   })
   .state('users.edit', {
     url:'/{id:[0-9]{1,8}}',
